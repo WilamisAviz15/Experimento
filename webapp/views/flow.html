@@ -1,0 +1,57 @@
+<div layout-padding>
+    <div layout="row" layout-align="center center" >
+        <md-card layout="column" layout-align="center center" flex="auto" width="50%">
+            <md-toolbar layout="row" layout-align="center center" layout-padding class="md-primary md-hue-2">
+                <label>Etapa IV - Questionário</label>
+            </md-toolbar>
+        </md-card>
+    </div>
+    <div layout="row" layout-align="center center" class="bg">
+        <md-card layout="column" layout-align="center center" flex="auto" width="50%">
+            <md-card-content layout="column" layout-align="left canter" flex="auto">
+
+                <p>
+                    Por favor, responda às seguintes questões com relação à sua experiência 
+                    na atividade que acabou de participar sobre resolução de problemas lógicos. 
+                    Não há respostas corretas ou erradas. 
+                    Pense sobre sua concordância em cada uma das sentenças apresentadas e então 
+                    marque o número que melhor representa sua concordância.
+
+                </p>
+            
+            </md-card-content>
+            <md-card-content>
+               
+                <form>
+                    <div ng-repeat="q in questions">
+                        <h3>{{q}}</h3>
+                        <div layout="row">
+                            <p>Discordo completamente</p>
+                            <md-radio-group ng-model="answers[$index]" layout="row" class="md-primary">
+                                <label>1</label>
+                                <md-radio-button value="1" aria-label="option 1"></md-radio-button>
+                                <label>2</label>
+                                <md-radio-button value="2" aria-label="option 2"></md-radio-button>
+                                <label>3</label>
+                                <md-radio-button value="3" aria-label="option 3"></md-radio-button>
+                                <label>4</label>
+                                <md-radio-button value="4" aria-label="option 4"></md-radio-button>
+                                <label>5</label>
+                                <md-radio-button value="5" aria-label="option 5"></md-radio-button>
+                            </md-radio-group>
+                            <p>Concordo completamente</p>
+                        </div>
+                        </p>
+                        </p>
+                        <md-divider></md-divider>
+                    </div>
+                    <md-button ng-click="processAnswers()" type="submit" class="md-raised md-primary">Concluir!</md-button>
+                    <span>{{msg}}</span>
+
+
+                </form>
+            </md-card-content>
+          
+        </md-card>
+    </div>
+</div>
