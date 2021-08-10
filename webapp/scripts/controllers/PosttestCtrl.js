@@ -15,14 +15,16 @@ angular.module('tutor').controller("PosttestCtrl", function($scope, $location, U
         "Você se sentiu quieto?",
         "Você se sentiu frustrado?",
         "Você se sentiu contente?",
-        "Você se sentiu entusiasmado?"
+        "Você se sentiu entusiasmado?",
+        "Você se sentiu confortável?",
+        "Você se sentiu desconfortável?"
     ];
     $scope.answers = [];
 
     $scope.processAnswers = function() {
 
 
-        if ($scope.answers.length < 15) {
+        if ($scope.answers.length < 17) {
 
             $scope.msg = "Por favor, responda todas as perguntas!"
         } else {
