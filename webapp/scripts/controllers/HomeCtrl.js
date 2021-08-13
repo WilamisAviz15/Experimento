@@ -1,7 +1,4 @@
-angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDialog, configService, User) {
-    console.log("HomeCtrl ok");
-
-
+angular.module('tutor').controller("HomeCtrl", function ($scope, $location, $mdDialog, configService, User) {
     var answers = ['B', 'E', 'E', 'E', 'A', 'B', 'D', 'E', 'B', 'B', 'E', 'B', 'C', 'E', 'A', 'C', 'B', 'D', 'B', 'A'];
     var userAnswer = null;
     var totalPoints = 0;
@@ -21,6 +18,10 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
     var levelFiveFlag = true;
     var levelTenFlag = true;
+
+
+
+
 
     var users = [{
         name: "Alan",
@@ -53,39 +54,72 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     $scope.increment = false;
     $scope.decrement = false;
 
-    $scope.showAvatar = true;
+    $scope.showNews = true;
+
+    $scope.showAvatar = false;
 
     $scope.showQuestions = false;
 
-    $scope.getUserColor = function(name) {
+    var opts = [{
+        title: 'Brancos são maioria em empregos de elite e negros ocupam vagas sem qualificação',
+        url: 'https://g1.globo.com/economia/noticia/brancos-sao-maioria-em-empregos-de-elite-e-negros-ocupam-vagas-sem-qualificacao.ghtml',
+        img: 'assets/default/images/test2.png',
+        abstract: 'Mãe e filha são negras, o grupo populacional no Brasil que ocupa a maioria das vagas em serviços braçais ou que exigem pouco preparo, como operador de telemarketing, vigilante e cortador de cana-de-açúcar.'
+    }, {
+        title: 'Como a ausência de negros trabalhando em tecnologia impacta os produtos criados para facilitar nosso dia a dia',
+        url: 'https://gauchazh.clicrbs.com.br/tecnologia/noticia/2019/04/como-a-ausencia-de-negros-trabalhando-em-tecnologia-impacta-os-produtos-criados-para-facilitar-nosso-dia-a-dia-cju32g40e00x001nvv1495xmq.html',
+        img: 'assets/default/images/test3.png',
+        abstract: 'Depois que vídeo de uma saboneteira cujo sensor só reconhecia peles claras viralizou, questão passou a ser debatida. E soluções para o problema começam a aparecer em iniciativas diversas.'
+    }, {
+        title: 'Negros ocupam cargos com menor remuneração no mercado de trabalho',
+        url: 'https://www.correiobraziliense.com.br/app/noticia/eu-estudante/trabalho-e-formacao/2019/11/17/interna-trabalhoeformacao-2019,807077/negros-ocupam-cargos-com-menor-remuneracao-no-mercado-de-trabalho.shtml',
+        img: 'assets/default/images/test4.png',
+        abstract: 'No mês em que se comemora o Dia Nacional da Consciência Negra, IBGE revela que mercado de trabalho ainda coloca obstáculos para a população negra.'
+    }, {
+        title: 'Mulheres e pessoas negras são apenas 1/3 dos profissionais de tecnologia e inovação, aponta pesquisa',
+        url: 'https://www.generonumero.media/mulheres-e-pessoas-negras-sao-apenas-13-dos-profissionais-de-tecnologia-e-inovacao-aponta-pesquisa/',
+        img: 'assets/default/images/test5.png',
+        abstract: 'Estudo #QuemCodaBr mostra que não há nenhuma pessoa negra em 32,7%  das equipes que trabalham com tecnologia no país; mapeamento do PretaLab reúne os perfis de profissionais negras que atuam no setor'
+    }];
+
+    var random = Math.floor((Math.random() * 123457)) % 4;
+    $scope.currentNew = opts[random];
+    //console.log(currentNew.img)
+
+    $scope.getUserColor = function (name) {
         if (name == "Alex")
             return "#e0e0e0";
         return "white";
     };
-    $scope.getBgColor = function() {
+    $scope.getBgColor = function () {
         return bgColor;
     };
 
-    $scope.hideAvatar = function() {
-        $scope.showAvatar = false;
-        $scope.showQuestions = true;
-        updatePoints(0); 
+    $scope.hideNews = function () {
+        $scope.showNews = false;
+        $scope.showAvatar = true;
     };
 
-    $scope.getUsers = function() {
+    $scope.hideAvatar = function () {
+        $scope.showAvatar = false;
+        $scope.showQuestions = true;
+        updatePoints(0);
+    };
+
+    $scope.getUsers = function () {
         return users;
     };
 
-    $scope.getImage = function(value) {
+    $scope.getImage = function (value) {
         return "assets/" + configService.getTheme() + "/images/avatar" + value + ".png";
     };
 
-    $scope.setAvatar = function(value) {
+    $scope.setAvatar = function (value) {
         userAvatar = value;
         users[4].avatar = value;
     };
 
-    $scope.getNumber = function(num) {
+    $scope.getNumber = function (num) {
         var array = new Array(num);
         for (var i = 0; i < num; i++) {
             array.push(i);
@@ -94,33 +128,33 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         return array;
     };
 
-    $scope.getBar = function() {
-        return "assets/" + configService.getTheme() + "/images/bar.png";
+    $scope.getBar = function () {
+        return "assets/default/images/bar.png";
 
     };
 
-    $scope.checkSet1 = function() {
+    $scope.checkSet1 = function () {
         return showSet1;
     };
 
 
-    $scope.checkAvatar = function() {
+    $scope.checkAvatar = function () {
         return !$scope.showAvatar;
     };
 
-    $scope.setSet1 = function(value) {
+    $scope.setSet1 = function (value) {
         showSet1 = value;
     };
 
-    $scope.showNext = function() {
+    $scope.showNext = function () {
         return configService.getNext();
     };
 
-    $scope.showPosttest = function() {
+    $scope.showPosttest = function () {
         $location.path("/posttest");
     };
 
-    $scope.getStars = function() {
+    $scope.getStars = function () {
 
         if (configService.nextOn) {
             return "star";
@@ -129,18 +163,18 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         return "star_border";
     };
 
-    $scope.getRanking = function(value) {
+    $scope.getRanking = function (value) {
         return users[value].avatar;
 
     };
 
-    var checkBadge = function(index) {
+    var checkBadge = function (index) {
 
         return configService.getBadges()[index];
     };
 
 
-    $scope.getBadge = function(name) {
+    $scope.getBadge = function (name) {
 
         var id = 0;
 
@@ -166,52 +200,52 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         return "assets/" + configService.getTheme() + "/images/" + flag + ".png";
     };
 
-    $scope.getAvatar = function() {
+    $scope.getAvatar = function () {
         return userAvatar;
     };
 
-    $scope.getLevel = function() {
+    $scope.getLevel = function () {
         return level;
     };
 
-    $scope.chooseAvatar = function() {
+    $scope.chooseAvatar = function () {
         $scope.showAvatar = false;
     };
 
-    $scope.getPoints = function() {
+    $scope.getPoints = function () {
 
         return totalPoints;
     };
 
-    $scope.question = function() {
+    $scope.question = function () {
         return "assets/" + configService.getTheme() + "/images/q-0.png";
     };
 
-    $scope.dynamicTheme = function() {
+    $scope.dynamicTheme = function () {
         return configService.getTheme();
     };
     var setCurrent = function setCurrent(index) {
         userAnswer = $scope.items[index];
     };
 
-    $scope.getCurrent = function() {
+    $scope.getCurrent = function () {
         return Math.trunc(totalPoints / 10);
     };
 
-    $scope.getQuestion = function() {
+    $scope.getQuestion = function () {
         return currentQuestion + 1;
     };
 
-    $scope.getUserName = function(index) {
+    $scope.getUserName = function (index) {
         return users[index].name;
     };
 
-    $scope.getUserPoints = function(index) {
+    $scope.getUserPoints = function (index) {
 
         return users[index].points;
     };
 
-    var setMsgType = function(type) {
+    var setMsgType = function (type) {
 
         if (type == "red") {
             currentMessage = "Resposta Errada!"
@@ -220,7 +254,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         };
     };
 
-    var playAnimation = function(type) {
+    var playAnimation = function (type) {
 
         console.log("playing animation: " + type);
 
@@ -230,15 +264,15 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
         setMsgType(type);
 
-        setTimeout(function() {
-            $scope.$apply(function() {
+        setTimeout(function () {
+            $scope.$apply(function () {
                 bgColor = "white";
                 flagMessage = false;
             });
         }, 2000);
     };
 
-    var updatePoints = function(value) {
+    var updatePoints = function (value) {
 
         if (value < 0 && (totalPoints + value) >= 0) {
             totalPoints += value;
@@ -279,13 +313,13 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         }];
 
         var sortedList = users.slice(0);
-        sortedList.sort(function(a, b) {
+        sortedList.sort(function (a, b) {
             return a.points - b.points;
         });
 
         users = sortedList.reverse();
 
-        setTimeout(function() {
+        setTimeout(function () {
             $scope.decrement = false;
             $scope.increment = false;
         }, 1000);
@@ -293,15 +327,15 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
     };
 
-    $scope.getMessage = function() {
+    $scope.getMessage = function () {
         return currentMessage;
     };
 
-    $scope.showMessage = function() {
+    $scope.showMessage = function () {
         return flagMessage;
     }
 
-    $scope.processAnswer = function(value) {
+    $scope.processAnswer = function (value) {
         setCurrent(value);
         var dialogType = null;
 
@@ -326,7 +360,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
                 configService.addBadge(0);
 
-                setTimeout(function() {
+                setTimeout(function () {
                     $mdDialog.hide();
                 }, 2000);
 
@@ -344,7 +378,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
                 configService.addBadge(1);
 
-                setTimeout(function() {
+                setTimeout(function () {
                     $mdDialog.hide();
                 }, 2500);
 
@@ -360,7 +394,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
                 configService.addBadge(2);
 
-                setTimeout(function() {
+                setTimeout(function () {
                     $mdDialog.hide();
                 }, 2500);
             };
@@ -381,7 +415,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
             configService.addBadge(2);
 
             showSet1 = false;
-            setTimeout(function() {
+            setTimeout(function () {
                 $mdDialog.hide();
             }, 2500);
         } else {
@@ -392,7 +426,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
         currentQuestion++;
         $scope.progress = 100 * (currentQuestion + 1) / 20;
-        $scope.question = function() {
+        $scope.question = function () {
             return "assets/" + configService.getTheme() + "/images/q-" + currentQuestion + ".png";
         };
 
@@ -401,7 +435,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
             //  configService.setNext(true);
             User.setActivityPoints(totalPoints);
-      
+
             console.log(User.getResponse());
             console.log(userAnswer);//vamos ver
             //  $location.path("/home");

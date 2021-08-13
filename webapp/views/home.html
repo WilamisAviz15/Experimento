@@ -33,7 +33,8 @@
             <md-content>
                 <md-list layout-padding>
                     <h3>Ranking</h3>
-                    <md-list-item ng-repeat="a in getUsers()" layout-align="left center" layout-margin class="list-item" style="background-color: {{getUserColor(a.name)}}">
+                    <md-list-item ng-repeat="a in getUsers()" layout-align="left center" layout-margin class="list-item"
+                        style="background-color: {{getUserColor(a.name)}}">
                         <div flex="40" layout="row" layout-align="left center">
                             <label class="small" layout-padding>{{$index+1}}.</label>
                             <img class="rounded" flex="30" ng-src="{{a.avatar}}">
@@ -48,9 +49,22 @@
             </md-content>
         </div>
         <div layout="column" flex="50" layout-margin layout-padding>
+            <md-card layout="column" layout-align="center left" layout-padding ng-show="showNews">
+                <img ng-src="{{currentNew.img}}" class="md-card-image" src="{{currentNew.img}}" style="flex: 0 0 auto;width: 100; height: auto;">
+                <md-card-title-text>
+                    <span class="md-headline ng-binding">{{currentNew.title}}</span>
+                </md-card-title-text>
+                <md-card-content>
+                    <p class="ng-binding">{{currentNew.abstract}}</p>
+                    <a href="{{currentNew.url}}" target="_blank">Veia mais em ...</a>
+                </md-card-content>
+                <div layout="column" layout-align="center center" layout-margin layout-padding>
+                    <md-button ng-click="hideNews()" class="md-primary md-raised">Continuar.</md-button>
+                </div>
+            </md-card>
             <md-card layout="column" layout-align="center left" layout-padding ng-show="showAvatar">
                 <div>
-                    <h3>1 - Personalize!  </h3>
+                    <h3>1 - Personalize! </h3>
                 </div>
                 <label layout-padding layout-margin> Escolha um avatar: </label>
                 <div layout="row" layout-align="center center" flex="60">
@@ -70,20 +84,24 @@
             </md-card>
             <md-card layout="column" layout-align="center left " layout-padding ng-show="showQuestions">
                 <h3>2 - Responda!</h3>
-                <label layout-padding layout-margin>Responda as questões abaixo para ganhar pontos, trofeus e atingir uma melhor posição no ranking!
+                <label layout-padding layout-margin>Responda as questões abaixo para ganhar pontos, trofeus e atingir
+                    uma melhor posição no ranking!
                 </label>
-                <md-progress-linear class="md-primary " md-mode="determinate " value="{{progress}}"></md-progress-linear>
+                <md-progress-linear class="md-primary " md-mode="determinate " value="{{progress}}">
+                </md-progress-linear>
                 <label layout-margin><b>Questão {{getQuestion()}}/20</b></label>
                 <div layout="row ">
                     <img src="{{question()}} " flex="50 ">
                     <md-list layout="column " flex="20 " flex-offset="5 ">
                         <h3>Resposta: </h3>
-                        <md-button class="md-accent md-hue-3 " flex ng-repeat="item in items " ng-click="processAnswer($index) ">
+                        <md-button class="md-accent md-hue-3 " flex ng-repeat="item in items "
+                            ng-click="processAnswer($index) ">
                             <h3>Letra {{item}}</h3>
                         </md-button>
                     </md-list>
                 </div>
-                <div flex="100" style="background-color:{{getBgColor()}}" ng-show="showMessage()" layout="row" layout-align="center center">
+                <div flex="100" style="background-color:{{getBgColor()}}" ng-show="showMessage()" layout="row"
+                    layout-align="center center">
                     <span class="text-light"><b>{{getMessage()}}</b></span>
                 </div>
             </md-card>
@@ -111,5 +129,5 @@
                     </div>
         </md-card>
 
-        </div>
-        </div>
+    </div>
+</div>

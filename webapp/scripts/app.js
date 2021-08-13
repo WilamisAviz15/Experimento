@@ -39,21 +39,21 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "ng
 
     // Neutral Theme
     $mdThemingProvider.theme("default")
-        .primaryPalette("blue-grey")
-        .accentPalette("blue-grey")
-        .warnPalette("blue-grey");
+        .primaryPalette("grey")
+        .accentPalette("grey")
+        .warnPalette("grey");
 
-    // ST-F 
-    $mdThemingProvider.theme("stFemale")
-        .primaryPalette("purple")
-        .accentPalette("purple")
-        .warnPalette("purple");
+    // // ST-W 
+    // $mdThemingProvider.theme("stWhite")
+    //     .primaryPalette("grey")
+    //     .accentPalette("grey")
+    //     .warnPalette("grey");
 
-    // ST-M 
-    $mdThemingProvider.theme("stMale")
-        .primaryPalette("blue")
-        .accentPalette("blue")
-        .warnPalette("blue");
+    // // ST-B 
+    // $mdThemingProvider.theme("stBlack")
+    //     .primaryPalette("grey")
+    //     .accentPalette("grey")
+    //     .warnPalette("grey");
 
 });
 
