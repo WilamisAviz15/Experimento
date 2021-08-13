@@ -1,6 +1,6 @@
 angular.module('tutor').controller("PretestCtrl", function($scope, $window, $location, configService, User) {
 
-    var themes = ["default", "stWhite", "stMale"];
+    var themes = ["default", "stWhite", "stBlack"];
 
     var random = Math.floor((Math.random() * 10000)) % 3;
 
