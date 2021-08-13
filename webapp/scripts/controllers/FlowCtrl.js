@@ -16,6 +16,7 @@ angular
         "Tive uma sensação de total controle sobre o que estava fazendo",
         "A experiência me deixou com uma ótima sensação",
         "Estava completamente focado na tarefa em questão",
+        "Fiquei apreensivo em não saber responder corretamente",
       ];
       $scope.answers = [];
 
@@ -25,7 +26,7 @@ angular
         //console.log($scope.answers);
         //  validation
 
-        if ($scope.answers.length < 8) {
+        if ($scope.answers.length < 9) {
 
           $scope.msg = "Por favor, responda todas as perguntas!";
         } else {
