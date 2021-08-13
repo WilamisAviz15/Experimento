@@ -19,10 +19,6 @@ angular.module('tutor').controller("HomeCtrl", function ($scope, $location, $mdD
     var levelFiveFlag = true;
     var levelTenFlag = true;
 
-
-
-
-
     var users = [{
         name: "Alan",
         points: 79, //19,
@@ -61,30 +57,29 @@ angular.module('tutor').controller("HomeCtrl", function ($scope, $location, $mdD
     $scope.showQuestions = false;
 
     var opts = [{
-        title: 'Brancos são maioria em empregos de elite e negros ocupam vagas sem qualificação',
-        url: 'https://g1.globo.com/economia/noticia/brancos-sao-maioria-em-empregos-de-elite-e-negros-ocupam-vagas-sem-qualificacao.ghtml',
+        title: 'Crescem VAGAS de emprego exclusivas para negros veja empresas participantes',
+        url: 'https://fdr.com.br/2021/05/13/crescem-vagas-de-emprego-exclusivas-para-negros-veja-empresas-participantes/',
         img: 'assets/default/images/test2.png',
-        abstract: 'Mãe e filha são negras, o grupo populacional no Brasil que ocupa a maioria das vagas em serviços braçais ou que exigem pouco preparo, como operador de telemarketing, vigilante e cortador de cana-de-açúcar.'
+        abstract: 'As empresas estão cada dia mais abrindo VAGAS de emprego exclusivas para negros. Esse método foi criado para combater à desigualdade racial nos mercados de trabalhos. E, também, proporcionar mais oportunidades para que a população negra consiga obter sucesso em sua carreira profissional.'
     }, {
-        title: 'Como a ausência de negros trabalhando em tecnologia impacta os produtos criados para facilitar nosso dia a dia',
-        url: 'https://gauchazh.clicrbs.com.br/tecnologia/noticia/2019/04/como-a-ausencia-de-negros-trabalhando-em-tecnologia-impacta-os-produtos-criados-para-facilitar-nosso-dia-a-dia-cju32g40e00x001nvv1495xmq.html',
+        title: 'Novo presidente do Banco do Brasil: quem é Fausto de Andrade Ribeiro',
+        url: 'https://g1.globo.com/economia/noticia/2021/03/19/novo-presidente-do-banco-do-brasil-quem-e-fausto-de-andrade-ribeiro.ghtml',
         img: 'assets/default/images/test3.png',
-        abstract: 'Depois que vídeo de uma saboneteira cujo sensor só reconhecia peles claras viralizou, questão passou a ser debatida. E soluções para o problema começam a aparecer em iniciativas diversas.'
+        abstract: 'Ribeiro é servidor do Banco do Brasil desde 1988. É formado em Direito e Administração de Empresas, tem especialização em finanças internacionais e pós-graduação em Economia. No BB, o executivo também foi gerente de canais e coordenou a unidade espanhola do banco.'
     }, {
-        title: 'Negros ocupam cargos com menor remuneração no mercado de trabalho',
-        url: 'https://www.correiobraziliense.com.br/app/noticia/eu-estudante/trabalho-e-formacao/2019/11/17/interna-trabalhoeformacao-2019,807077/negros-ocupam-cargos-com-menor-remuneracao-no-mercado-de-trabalho.shtml',
+        title: 'Veja 6 passos para promover igualdade racial dentro das empresas',
+        url: 'https://exame.com/carreira/veja-6-passos-para-promover-igualdade-racial-dentro-das-empresas/',
         img: 'assets/default/images/test4.png',
-        abstract: 'No mês em que se comemora o Dia Nacional da Consciência Negra, IBGE revela que mercado de trabalho ainda coloca obstáculos para a população negra.'
-    }, {
-        title: 'Mulheres e pessoas negras são apenas 1/3 dos profissionais de tecnologia e inovação, aponta pesquisa',
-        url: 'https://www.generonumero.media/mulheres-e-pessoas-negras-sao-apenas-13-dos-profissionais-de-tecnologia-e-inovacao-aponta-pesquisa/',
-        img: 'assets/default/images/test5.png',
-        abstract: 'Estudo #QuemCodaBr mostra que não há nenhuma pessoa negra em 32,7%  das equipes que trabalham com tecnologia no país; mapeamento do PretaLab reúne os perfis de profissionais negras que atuam no setor'
+        abstract: 'Educar sobre questões raciais, fazer um diagnóstico da diversidade na empresa e comprometer a liderança com a pauta racial são os principais caminhos para qualquer organização promover a equidade entre brancos e negros, principalmente nos cargos de liderança.'
     }];
 
-    var random = Math.floor((Math.random() * 123457)) % 4;
-    $scope.currentNew = opts[random];
-    //console.log(currentNew.img)
+    if(configService.getTheme() == "stBlack"){
+        $scope.currentNew = opts[0];
+    } else if(configService.getTheme() == "stWhite"){
+        $scope.currentNew = opts[1];
+    }else{
+        $scope.currentNew = opts[2];
+    }
 
     $scope.getUserColor = function (name) {
         if (name == "Alex")
