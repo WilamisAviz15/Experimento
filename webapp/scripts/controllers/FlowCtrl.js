@@ -3,7 +3,7 @@ angular
   .controller(
     "FlowCtrl",
     function ($scope, $window, $location, configService, User) {
-      var themes = ["default", "stWhite", "stBlack"];
+      var themes = ["stWhite", "stBlack"];
 
       var random = Math.floor(Math.random() * 10000) % 3;
 

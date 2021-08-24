@@ -1,6 +1,5 @@
-<!--comentar-->
-
 <div layout-padding>
+    <form name="myForm">
     <div layout="row" layout-align="center center">
         <md-card layout="column" layout-align="center center" flex="auto" width="50%">
             <md-toolbar layout="row" layout-align="center center" layout-padding class="md-primary md-hue-2">
@@ -40,7 +39,8 @@
             <md-input-container class="block" flex-gt-sm>
                 <label>Etnia</label>
                 <md-select ng-required="true" ng-model="ethnicity">
-                    <md-option ng-repeat="g in ['Pardo','Preto', 'Branco', 'Indígenas', 'Prefiro não Responder']">
+                    <md-option 
+                        ng-repeat="g in ['Pardo','Preto', 'Branco', 'Indígena', 'Prefiro não Responder']">
                         {{g}}
                     </md-option>
                 </md-select>
@@ -49,7 +49,7 @@
             <md-input-container flex-gt-sm>
                 <label ng-required="true">Gênero</label>
                 <md-select ng-required="true" ng-model="gender">
-                    <md-option ng-repeat="g in ['Masculino','Feminino','Não Binarie','Outro','Prefiro não Responder']">
+                    <md-option ng-repeat="g in ['Masculino','Feminino','Prefiro não Responder']">
                         {{g}}
                     </md-option>
                 </md-select>
@@ -59,7 +59,8 @@
             <md-input-container class="block" flex-gt-sm>
                 <label>Orientação sexual</label>
                 <md-select ng-required="true" ng-model="sexualOrientation">
-                    <md-option ng-repeat="g in ['Homossexual', 'Heterossexual', 'Pansexual', 'Bissexual', 'Assexual', 'Prefiro não Responder']   ">
+                    <md-option
+                        ng-repeat="g in ['Homossexual', 'Heterossexual', 'Pansexual', 'Bissexual', 'Assexual', 'Prefiro não Responder']   ">
                         {{g}}
                     </md-option>
                 </md-select>
@@ -68,18 +69,18 @@
                 <label>Estado econômico</label>
                 <md-select ng-required="true" ng-model="economicState">
                     <md-option
-                    ng-repeat="g in ['Classe baixa','Classe média baixa', 'Classe média', ' Classe média alta', 'Classe alta']   ">
-                    {{g}}
-                </md-option>
-            </md-select>
-        </md-input-container>
-        <md-input-container class="block" flex-gt-sm>
-            <label>Cidade</label>
-            <input type="text" name="city" ng-required="true" ng-model="city">
-        </md-input-container>
+                        ng-repeat="g in ['Classe baixa','Classe média baixa', 'Classe média', ' Classe média alta', 'Classe alta']   ">
+                        {{g}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="block" flex-gt-sm>
+                <label>Cidade</label>
+                <input type="text" name="city" ng-required="true" ng-model="city">
+            </md-input-container>
 
-    </div>
-    
+        </div>
+
         <!-- <md-card-content layout="column">
             <h5>Cisgênero: é a pessoa que se identifica com o sexo biológico designado no momento de seu
                 nascimento. </h5>
@@ -100,7 +101,7 @@
 
             <md-input-container class="block" flex-gt-sm>
                 <label>Instituição de ensino</label>
-                <input type="text" name="institucion" ng-required="true" ng-model="institucion">
+                <input type="text" name="institucion" ng-model="institucion">
             </md-input-container>
 
 
@@ -113,10 +114,10 @@
                 </md-select>
             </md-input-container>
 
-            
+
             <md-input-container class="block" flex-gt-sm>
                 <label>Conclusão prevista</label>
-                <input type="number" name="conclusion" ng-required="true" ng-model="conclusion">
+                <input type="number" name="conclusion" ng-model="conclusion">
             </md-input-container>
 
         </div>
@@ -138,7 +139,7 @@
         </div>
         <md-card-content>
     </div>
-    <md-button ng-click="processAnswers()" type="submit" class="md-raised md-primary">Finalizar!
+    <md-button ng-click="processAnswers()" type="submit" ng-disabled="myForm.$invalid" class="md-raised md-primary">Finalizar!
     </md-button>
     <span>{{msg}}</span>
 
@@ -147,5 +148,4 @@
 
 
     </md-card>
-</div>
 </div>

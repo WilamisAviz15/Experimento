@@ -66,19 +66,12 @@ angular.module('tutor').controller("HomeCtrl", function ($scope, $location, $mdD
         url: 'https://g1.globo.com/economia/noticia/2021/03/19/novo-presidente-do-banco-do-brasil-quem-e-fausto-de-andrade-ribeiro.ghtml',
         img: 'assets/default/images/test3.png',
         abstract: 'Ribeiro é servidor do Banco do Brasil desde 1988. É formado em Direito e Administração de Empresas, tem especialização em finanças internacionais e pós-graduação em Economia. No BB, o executivo também foi gerente de canais e coordenou a unidade espanhola do banco.'
-    }, {
-        title: 'Políticas de igualdade racial em empresas brasileiras existem, mas ainda falta empatia',
-        url: 'https://envolverde.com.br/politicas-de-igualdade-racial-em-empresas-brasileiras-existem-mas-ainda-falta-empatia/',
-        img: 'assets/default/images/test4.png',
-        abstract: 'Embora as empresas brasileiras pratiquem medidas para promover a inclusão de negros no mercado de trabalho, as ações ainda impactam, na prática, números pouco expressivos quando comparados ao número de pessoas brancas ocupando as vagas existentes. Segundo um levantamento realizado pelo Instituto Ethos em 2016 com 500 grandes empresas brasileiras, 12% delas dizem ter medidas para promover negros e pardos. Contudo, a mesma pesquisa revela que pessoas negras ocupam apenas 6,3% de cargos na gerência e 4,7% no quadro executivo, embora representem 54% da população brasileira.'
     }];
 
     if(configService.getTheme() == "stBlack"){
         $scope.currentNew = opts[0];
     } else if(configService.getTheme() == "stWhite"){
         $scope.currentNew = opts[1];
-    }else{
-        $scope.currentNew = opts[2];
     }
 
     $scope.getUserColor = function (name) {
