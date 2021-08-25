@@ -2,7 +2,7 @@ angular.module('tutor').controller("PretestCtrl", function($scope, $window, $loc
 
     var themes = ["stWhite", "stBlack"];
 
-    var random = Math.floor((Math.random() * 10000)) % 3;
+    var random = Math.floor((Math.random() * 10000)) % 2;
 
     $scope.questions = [
     "Minhas habilidades combinam com o desafio que estou experimentando",

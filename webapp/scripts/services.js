@@ -4,13 +4,13 @@ tutorServices.service("configService", function() {
 
     var opts = ["stBlack", "stWhite"];
 
-    var random = Math.floor((Math.random() * 123457)) % 2;
+    var random = Math.floor((Math.random() * 1234567)%2);
     var currentTheme = opts[random];
     // var currentTheme = "default";
 
     var next = false;
 
-    var badgeFlags = [false, false, false];
+    var badgeFlags = [false, false];
 
     this.setTheme = function(value) {
         console.log("setting theme: " + value);

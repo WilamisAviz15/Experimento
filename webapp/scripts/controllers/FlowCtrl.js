@@ -5,7 +5,7 @@ angular
     function ($scope, $window, $location, configService, User) {
       var themes = ["stWhite", "stBlack"];
 
-      var random = Math.floor(Math.random() * 10000) % 3;
+      var random = Math.floor(Math.random() * 10000) % 2;
 
       $scope.questions = [
         "Estava muito claro para mim como eu estava me saindo na atividade",
